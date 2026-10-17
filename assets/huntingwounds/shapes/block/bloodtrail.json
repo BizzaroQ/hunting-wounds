@@ -1,0 +1,105 @@
+{
+	"editor": {
+		"allAngles": false,
+		"singleTexture": true
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textures": {
+		"blood": "huntingwounds:block/blood-day0"
+	},
+	"elements": [
+		{
+			"name": "MainSplatter",
+			"from": [ 4.5, 0.0, 5.0 ],
+			"to": [ 11.0, 0.15, 11.5 ],
+			"faces": {
+				"north": { "texture": "#blood", "uv": [ 4.0, 0.0, 11.0, 0.5 ] },
+				"east": { "texture": "#blood", "uv": [ 5.0, 0.0, 11.5, 0.5 ] },
+				"south": { "texture": "#blood", "uv": [ 4.0, 0.0, 11.0, 0.5 ] },
+				"west": { "texture": "#blood", "uv": [ 5.0, 0.0, 11.5, 0.5 ] },
+				"up": { "texture": "#blood", "uv": [ 4.0, 5.0, 11.0, 11.5 ] },
+				"down": { "texture": "#blood", "uv": [ 4.0, 5.0, 11.0, 11.5 ] }
+			}
+		},
+		{
+			"name": "DropNorthWest",
+			"from": [ 2.0, 0.0, 2.0 ],
+			"to": [ 5.0, 0.12, 4.5 ],
+			"faces": {
+				"north": { "texture": "#blood", "uv": [ 2.0, 0.0, 5.0, 0.5 ] },
+				"east": { "texture": "#blood", "uv": [ 2.0, 0.0, 4.5, 0.5 ] },
+				"south": { "texture": "#blood", "uv": [ 2.0, 0.0, 5.0, 0.5 ] },
+				"west": { "texture": "#blood", "uv": [ 2.0, 0.0, 4.5, 0.5 ] },
+				"up": { "texture": "#blood", "uv": [ 2.0, 2.0, 5.0, 4.5 ] },
+				"down": { "texture": "#blood", "uv": [ 2.0, 2.0, 5.0, 4.5 ] }
+			}
+		},
+		{
+			"name": "DropNorthEast",
+			"from": [ 11.5, 0.0, 2.5 ],
+			"to": [ 14.0, 0.12, 5.5 ],
+			"faces": {
+				"north": { "texture": "#blood", "uv": [ 11.5, 0.0, 14.0, 0.5 ] },
+				"east": { "texture": "#blood", "uv": [ 2.5, 0.0, 5.5, 0.5 ] },
+				"south": { "texture": "#blood", "uv": [ 11.5, 0.0, 14.0, 0.5 ] },
+				"west": { "texture": "#blood", "uv": [ 2.5, 0.0, 5.5, 0.5 ] },
+				"up": { "texture": "#blood", "uv": [ 11.5, 2.5, 14.0, 5.5 ] },
+				"down": { "texture": "#blood", "uv": [ 11.5, 2.5, 14.0, 5.5 ] }
+			}
+		},
+		{
+			"name": "DropSouthWest",
+			"from": [ 1.5, 0.0, 10.5 ],
+			"to": [ 4.0, 0.12, 13.5 ],
+			"faces": {
+				"north": { "texture": "#blood", "uv": [ 1.5, 0.0, 4.0, 0.5 ] },
+				"east": { "texture": "#blood", "uv": [ 10.5, 0.0, 13.5, 0.5 ] },
+				"south": { "texture": "#blood", "uv": [ 1.5, 0.0, 4.0, 0.5 ] },
+				"west": { "texture": "#blood", "uv": [ 10.5, 0.0, 13.5, 0.5 ] },
+				"up": { "texture": "#blood", "uv": [ 1.5, 10.5, 4.0, 13.5 ] },
+				"down": { "texture": "#blood", "uv": [ 1.5, 10.5, 4.0, 13.5 ] }
+			}
+		},
+		{
+			"name": "DropSouthEast",
+			"from": [ 10.0, 0.0, 12.0 ],
+			"to": [ 13.5, 0.12, 14.5 ],
+			"faces": {
+				"north": { "texture": "#blood", "uv": [ 10.0, 0.0, 13.5, 0.5 ] },
+				"east": { "texture": "#blood", "uv": [ 12.0, 0.0, 14.5, 0.5 ] },
+				"south": { "texture": "#blood", "uv": [ 10.0, 0.0, 13.5, 0.5 ] },
+				"west": { "texture": "#blood", "uv": [ 12.0, 0.0, 14.5, 0.5 ] },
+				"up": { "texture": "#blood", "uv": [ 10.0, 12.0, 13.5, 14.5 ] },
+				"down": { "texture": "#blood", "uv": [ 10.0, 12.0, 13.5, 14.5 ] }
+			}
+		},
+		{
+			"name": "SpeckNorth",
+			"from": [ 7.5, 0.0, 1.5 ],
+			"to": [ 9.5, 0.1, 3.5 ],
+			"faces": {
+				"north": { "texture": "#blood", "uv": [ 7.5, 0.0, 9.5, 0.5 ] },
+				"east": { "texture": "#blood", "uv": [ 1.5, 0.0, 3.5, 0.5 ] },
+				"south": { "texture": "#blood", "uv": [ 7.5, 0.0, 9.5, 0.5 ] },
+				"west": { "texture": "#blood", "uv": [ 1.5, 0.0, 3.5, 0.5 ] },
+				"up": { "texture": "#blood", "uv": [ 7.5, 1.5, 9.5, 3.5 ] },
+				"down": { "texture": "#blood", "uv": [ 7.5, 1.5, 9.5, 3.5 ] }
+			}
+		},
+		{
+			"name": "SpeckEast",
+			"from": [ 12.5, 0.0, 8.0 ],
+			"to": [ 14.5, 0.1, 10.0 ],
+			"faces": {
+				"north": { "texture": "#blood", "uv": [ 12.5, 0.0, 14.5, 0.5 ] },
+				"east": { "texture": "#blood", "uv": [ 8.0, 0.0, 10.0, 0.5 ] },
+				"south": { "texture": "#blood", "uv": [ 12.5, 0.0, 14.5, 0.5 ] },
+				"west": { "texture": "#blood", "uv": [ 8.0, 0.0, 10.0, 0.5 ] },
+				"up": { "texture": "#blood", "uv": [ 12.5, 8.0, 14.5, 10.0 ] },
+				"down": { "texture": "#blood", "uv": [ 12.5, 8.0, 14.5, 10.0 ] }
+			}
+		}
+	]
+}
+

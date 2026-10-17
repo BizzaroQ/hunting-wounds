@@ -1,0 +1,34 @@
+{
+	"code": "bloodtrail",
+	"class": "BlockBloodTrail",
+	"entityClass": "BloodTrail",
+	"variantgroups": [
+		{ "code": "stage", "states": ["day0", "day1", "day2", "day3", "day4"] }
+	],
+	"blockmaterial": "Soil",
+	"drawtype": "json",
+	"shape": { "base": "huntingwounds:block/bloodtrail" },
+	"randomizeRotations": true,
+	"texturesByType": {
+		"*-day0": { "blood": { "base": "huntingwounds:block/blood-day0" } },
+		"*-day1": { "blood": { "base": "huntingwounds:block/blood-day1" } },
+		"*-day2": { "blood": { "base": "huntingwounds:block/blood-day2" } },
+		"*-day3": { "blood": { "base": "huntingwounds:block/blood-day3" } },
+		"*-day4": { "blood": { "base": "huntingwounds:block/blood-day4" } }
+	},
+	"replaceable": 9999,
+	"resistance": 0.1,
+	"lightAbsorption": 0,
+	"sidesolid": { "all": false },
+	"sideopaque": { "all": false },
+	"emitSideAo": { "all": false },
+	"sideao": { "all": false },
+	"rainPermeable": true,
+	"drops": [],
+	"selectionbox": null,
+	"collisionbox": null,
+	"vertexFlags": {
+		"zOffset": 1
+	}
+}
+

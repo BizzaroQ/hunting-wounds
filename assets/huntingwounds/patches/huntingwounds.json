@@ -1,0 +1,72 @@
+[
+  {
+    "file": "game:entities/animal/mammal/hooved/deer-*",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": { "code": "huntingwounds" },
+    "side": "Server"
+  },
+  {
+    "file": "game:entities/animal/mammal/hooved/moose-*",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": { "code": "huntingwounds" },
+    "side": "Server"
+  },
+  {
+    "file": "game:entities/animal/mammal/hooved/gazelle-*",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": { "code": "huntingwounds" },
+    "side": "Server"
+  },
+  {
+    "file": "game:entities/animal/mammal/hooved/goat-*",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": { "code": "huntingwounds" },
+    "side": "Server"
+  },
+  {
+    "file": "game:entities/animal/mammal/hooved/pig-*",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": { "code": "huntingwounds" },
+    "side": "Server"
+  },
+  {
+    "file": "game:entities/animal/mammal/hooved/sheep-*",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": { "code": "huntingwounds" },
+    "side": "Server"
+  },
+  {
+    "file": "game:entities/animal/mammal/hare-*",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": { "code": "huntingwounds" },
+    "side": "Server"
+  },
+  {
+    "file": "game:entities/animal/mammal/raccoon-*",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": { "code": "huntingwounds" },
+    "side": "Server"
+  },
+  {
+    "file": "game:entities/animal/mammal/fox-*",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": { "code": "huntingwounds" },
+    "side": "Server"
+  },
+  {
+    "file": "game:entities/animal/bird/chicken-*",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": { "code": "huntingwounds" },
+    "side": "Server"
+  }
+]

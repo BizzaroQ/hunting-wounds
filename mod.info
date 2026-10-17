@@ -1,0 +1,12 @@
+{
+  "type": "mod",
+  "modid": "huntingwounds",
+  "name": "Hunting Wounds",
+  "authors": ["AuthorName"],
+  "description": "Applies speed debuffs and blood particles to damaged entities.",
+  "version": "1.0.0",
+  "dependencies": {
+    "game": "*",
+    "survival": "*"
+  }
+}
