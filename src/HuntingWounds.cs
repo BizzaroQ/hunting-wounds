@@ -9,48 +9,64 @@ namespace HuntingWounds
 {
     public class HuntingWoundsConfig
     {
-        public double TotalLifespanDays = 1.0;
-        public double WoundRecoveryHours = 24.0;
-        public float SpeedPenaltyPerHit = -0.15f;
-        public float SpeedBoostPerHit = 0.20f;
-        public double SlowdownChance = 0.80;
-        public float CalmGraceSeconds = 2.5f;
-        public bool RespectLandClaims = false;
+        public double TotalLifespanDays { get; set; } = 1.0;
+        public double WoundRecoveryHours { get; set; } = 24.0;
+        public float SpeedPenaltyPerHit { get; set; } = -0.15f;
+        public float SpeedBoostPerHit { get; set; } = 0.20f;
+        public double SlowdownChance { get; set; } = 0.80;
+        public float CalmGraceSeconds { get; set; } = 2.5f;
+        public bool RespectLandClaims { get; set; } = false;
     }
 
     public class HuntingWoundsModSystem : ModSystem
     {
+        private const string ConfigFileName = "huntingwounds.json";
         public static HuntingWoundsConfig Config { get; private set; } = new HuntingWoundsConfig();
 
         public override void Start(ICoreAPI api)
         {
             base.Start(api);
 
-            if (api.Side == EnumAppSide.Server)
-            {
-                try
-                {
-                    var loaded = api.LoadModConfig<HuntingWoundsConfig>("huntingwounds.json");
-                    if (loaded != null)
-                    {
-                        Config = loaded;
-                    }
-                    else
-                    {
-                        Config = new HuntingWoundsConfig();
-                        api.StoreModConfig(Config, "huntingwounds.json");
-                    }
-                }
-                catch (Exception e)
-                {
-                    api.Logger.Warning("[HuntingWounds] Failed to load huntingwounds.json config, using defaults: {0}", e.Message);
-                    Config = new HuntingWoundsConfig();
-                }
-            }
-
             api.RegisterEntityBehaviorClass("huntingwounds", typeof(EntityBehaviorHuntingWounds));
             api.RegisterBlockClass("BlockBloodTrail", typeof(BlockBloodTrail));
             api.RegisterBlockEntityClass("BloodTrail", typeof(BlockEntityBloodTrail));
+        }
+
+        public override void AssetsLoaded(ICoreAPI api)
+        {
+            base.AssetsLoaded(api);
+            if (api.Side == EnumAppSide.Server)
+            {
+                LoadConfig(api);
+            }
+        }
+
+        private void LoadConfig(ICoreAPI api)
+        {
+            try
+            {
+                // 1. Load defaults from bundled assets/huntingwounds/config/huntingwounds.json
+                var bundledAsset = api.Assets.TryGet(new AssetLocation("huntingwounds", "config/huntingwounds.json"));
+                if (bundledAsset != null)
+                {
+                    Config = bundledAsset.ToObject<HuntingWoundsConfig>() ?? new HuntingWoundsConfig();
+                }
+
+                // 2. Load user overrides from VintagestoryData/ModConfig/huntingwounds.json if present
+                var userConfig = api.LoadModConfig<HuntingWoundsConfig>(ConfigFileName);
+                if (userConfig != null)
+                {
+                    Config = userConfig;
+                }
+
+                // Save to VintagestoryData/ModConfig/huntingwounds.json so users/server admins can edit it
+                api.StoreModConfig(Config, ConfigFileName);
+            }
+            catch (Exception e)
+            {
+                api.Logger.Warning("[HuntingWounds] Failed to load {0}, using defaults: {1}", ConfigFileName, e.Message);
+                Config = new HuntingWoundsConfig();
+            }
         }
     }
 

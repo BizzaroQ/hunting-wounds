@@ -1,0 +1,10 @@
+{
+  "TotalLifespanDays": 1.0,
+  "WoundRecoveryHours": 24.0,
+  "SpeedPenaltyPerHit": -0.15,
+  "SpeedBoostPerHit": 0.20,
+  "SlowdownChance": 0.80,
+  "CalmGraceSeconds": 2.5,
+  "RespectLandClaims": false
+}
+
