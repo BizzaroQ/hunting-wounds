@@ -54,18 +54,25 @@ namespace HuntingWounds
             }
         }
 
-        public void RefreshTrail(double currentTotalDays, int previousBlockId)
+        public void RefreshTrail(Block freshBlock, double currentTotalDays, int previousBlockId)
         {
+            this.Block = freshBlock;
             createdTotalDays = currentTotalDays;
             if (replacedBlockId == 0 && previousBlockId != 0)
             {
                 replacedBlockId = previousBlockId;
             }
-            MarkDirty(false);
+            MarkDirty(true);
         }
 
         private void OnServerTick(float dt)
         {
+            Block currentBlock = Api.World.BlockAccessor.GetBlock(Pos);
+            if (currentBlock?.Code == null || !currentBlock.Code.Path.StartsWith("bloodtrail-"))
+            {
+                return;
+            }
+
             if (createdTotalDays < 0)
             {
                 createdTotalDays = Api.World.Calendar.TotalDays;
@@ -73,7 +80,7 @@ namespace HuntingWounds
 
             double ageDays = Api.World.Calendar.TotalDays - createdTotalDays;
 
-            // After 5 in-game days, remove the blood trail (and restore any trampled grass)
+            // After the full 5-day duration, remove the brown blood trail (and restore any trampled grass)
             if (ageDays >= TotalLifespanDays)
             {
                 int restoreId = 0;
@@ -87,14 +94,15 @@ namespace HuntingWounds
                 }
 
                 Api.World.BlockAccessor.SetBlock(restoreId, Pos);
+                Api.World.BlockAccessor.MarkBlockDirty(Pos);
                 return;
             }
 
-            // Transition across 5 color stages (day0 -> day1 -> day2 -> day3 -> day4) over days 0..4
-            int targetStage = GameMath.Clamp((int)Math.Floor(ageDays), 0, 4);
-            string targetVariant = $"day{targetStage}";
+            // First half of duration (0 to 2.5 days): Red (day0)
+            // Second half of duration (2.5 to 5.0 days): Brown (day3)
+            string targetVariant = (ageDays < TotalLifespanDays * 0.5) ? "day0" : "day3";
 
-            if (Block?.Variant != null && Block.Variant.TryGetValue("stage", out string currentStage) && currentStage != targetVariant)
+            if (currentBlock.Variant != null && currentBlock.Variant.TryGetValue("stage", out string currentStage) && currentStage != targetVariant)
             {
                 Block nextStageBlock = Api.World.GetBlock(new AssetLocation("huntingwounds", $"bloodtrail-{targetVariant}"));
                 if (nextStageBlock != null)
@@ -275,7 +283,7 @@ namespace HuntingWounds
 
             if (blockAccessor.GetBlockEntity(surfacePos) is BlockEntityBloodTrail beBlood)
             {
-                beBlood.RefreshTrail(entity.World.Calendar.TotalDays, previousBlockId);
+                beBlood.RefreshTrail(freshBloodBlock, entity.World.Calendar.TotalDays, previousBlockId);
             }
 
             lastBloodTrailPos = surfacePos;
