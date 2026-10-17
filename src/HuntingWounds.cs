@@ -9,7 +9,7 @@ namespace HuntingWounds
 {
     public class HuntingWoundsConfig
     {
-        public double TotalLifespanDays = 5.0;
+        public double TotalLifespanDays = 1.0;
         public double WoundRecoveryHours = 24.0;
         public float SpeedPenaltyPerHit = -0.15f;
         public float SpeedBoostPerHit = 0.20f;
@@ -118,7 +118,7 @@ namespace HuntingWounds
                 createdTotalDays = Api.World.Calendar.TotalDays;
             }
 
-            double lifespanDays = HuntingWoundsModSystem.Config?.TotalLifespanDays ?? 5.0;
+            double lifespanDays = HuntingWoundsModSystem.Config?.TotalLifespanDays ?? 1.0;
             double ageDays = Api.World.Calendar.TotalDays - createdTotalDays;
 
             // After the full duration, remove the brown blood trail (and restore any trampled grass/snow)
