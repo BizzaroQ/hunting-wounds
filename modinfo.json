@@ -5,7 +5,7 @@
   "name": "Hunting Wounds",
   "authors": ["sZsZsZ"],
   "description": "Applies speed debuffs and blood particles to damaged entities.",
-  "version": "1.0.7",
+  "version": "1.0.0",
   "requiredOnClient": true,
   "requiredOnServer": true,
   "dependencies": {
