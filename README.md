@@ -46,24 +46,24 @@ On server startup, the mod reads or generates `VintagestoryData/ModConfig/huntin
 
 ```json
 {
-  "TotalLifespanDays": 1.0,
+  "BloodTrailLifespanDays": 1.0,
   "WoundRecoveryHours": 24.0,
-  "SpeedPenaltyPerHit": -0.15,
-  "SpeedBoostPerHit": 0.20,
-  "SlowdownChance": 0.80,
-  "CalmGraceSeconds": 2.5,
+  "WalkSpeedPenaltyPerHit": -0.15,
+  "AdrenalineSpeedBoostPerHit": 0.20,
+  "SlowdownChancePerHit": 0.80,
+  "StopBleedingAfterCalmSeconds": 2.5,
   "RespectLandClaims": false
 }
 ```
 
 | Setting | Default | Description |
 | :--- | :---: | :--- |
-| `TotalLifespanDays` | `1.0` | In-game days before a blood trail block is removed. Switches from `day0` to `day3` at 50% of this value. |
+| `BloodTrailLifespanDays` | `1.0` | In-game days before a blood trail block is removed. Switches from `day0` (fresh) to `day3` (dried) at 50% of this value. |
 | `WoundRecoveryHours` | `24.0` | In-game hours after the last hit before hit count and walk speed modifiers reset. Set to `<= 0` to disable. |
-| `SpeedPenaltyPerHit` | `-0.15` | Walk speed modifier added per hit when a slowdown occurs (`-0.15` = `-15%`). Minimum total modifier is `-0.90`. |
-| `SpeedBoostPerHit` | `0.20` | Walk speed modifier added per hit when a speed increase occurs (`0.20` = `+20%`). |
-| `SlowdownChance` | `0.80` | Probability (`0.0`–`1.0`) that a hit applies `SpeedPenaltyPerHit` instead of `SpeedBoostPerHit`. |
-| `CalmGraceSeconds` | `2.5` | Real-time seconds an entity must be outside `Flee`, `SeekEntity`, or `MeleeAttack` tasks before bleeding stops. |
+| `WalkSpeedPenaltyPerHit` | `-0.15` | Walk speed modifier added per hit when a slowdown occurs (`-0.15` = `-15%`). Minimum total modifier is `-0.90`. |
+| `AdrenalineSpeedBoostPerHit` | `0.20` | Walk speed modifier added per hit when an adrenaline speed boost occurs (`0.20` = `+20%`). |
+| `SlowdownChancePerHit` | `0.80` | Probability (`0.0`–`1.0`) that a hit applies `WalkSpeedPenaltyPerHit` instead of `AdrenalineSpeedBoostPerHit`. |
+| `StopBleedingAfterCalmSeconds` | `2.5` | Real-time seconds an entity must be outside `Flee`, `SeekEntity`, or `MeleeAttack` tasks before bleeding stops. |
 | `RespectLandClaims` | `false` | If `true`, prevents blood trail blocks from being placed inside claimed land. |
 
 ---
@@ -74,17 +74,22 @@ On server startup, the mod reads or generates `VintagestoryData/ModConfig/huntin
 ├── assets/
 │   └── huntingwounds/
 │       ├── blocktypes/
-│       │   └── bloodtrail.json        # Block definition and stage variants
+│       │   └── bloodtrail.json            # Block definition and stage variants
 │       ├── config/
-│       │   └── huntingwounds.json     # Default configuration
+│       │   └── huntingwounds.json         # Default configuration
+│       ├── lang/
+│       │   └── en.json                    # English localization for blood trail blocks
 │       ├── patches/
-│       │   └── huntingwounds.json     # Entity behavior patches
+│       │   └── huntingwounds.json         # Entity behavior patches
 │       ├── shapes/block/
-│       │   └── bloodtrail.json        # Block shape
+│       │   └── bloodtrail.json            # Block shape
 │       └── textures/block/
-│           └── blood-day0..4.png      # Block textures
+│           └── blood-day0..4.png          # Block textures
 ├── src/
-│   └── HuntingWounds.cs               # ModSystem, Block, BlockEntity, and EntityBehavior
-└── modinfo.json                       # Mod metadata
+│   ├── HuntingWounds.cs                   # ModSystem entry point and HuntingWoundsConfig
+│   ├── BlockBloodTrail.cs                 # Blood trail block behavior
+│   ├── BlockEntityBloodTrail.cs           # Blood trail aging and ground cover restoration
+│   └── EntityBehaviorHuntingWounds.cs     # Entity wound tracking, speed modifiers, and bleeding
+└── modinfo.json                           # Mod metadata
 ```
 

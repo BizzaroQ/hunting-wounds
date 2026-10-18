@@ -1,10 +1,10 @@
 {
-  "TotalLifespanDays": 1.0,
+  "BloodTrailLifespanDays": 1.0,
   "WoundRecoveryHours": 24.0,
-  "SpeedPenaltyPerHit": -0.15,
-  "SpeedBoostPerHit": 0.20,
-  "SlowdownChance": 0.80,
-  "CalmGraceSeconds": 2.5,
+  "WalkSpeedPenaltyPerHit": -0.15,
+  "AdrenalineSpeedBoostPerHit": 0.20,
+  "SlowdownChancePerHit": 0.80,
+  "StopBleedingAfterCalmSeconds": 2.5,
   "RespectLandClaims": false
 }
 
