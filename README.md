@@ -1,5 +1,11 @@
 # Hunting Wounds (Hunter's Delight)
 
+> [!WARNING]
+> # ⚠️ DISCLAIMER: THIS PROJECT IS VIBE CODED ⚠️
+> **This entire codebase is VIBE CODED.**
+> I did test this one though. It runs. So... that's nice.
+> Use at your own risk. Expect bugs, edge cases, and really... anythings on the table. Stay safe. 
+
 A Vintage Story mod that applies movement speed modifiers, blood particles, and temporary blood trail blocks to damaged entities in singleplayer and multiplayer.
 
 ---
